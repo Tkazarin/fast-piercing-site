@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тестик</title>
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-color: black;
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 20c-5 0-10 5-10 10 0 3 2 6 5 7-2 1-3 3-3 5 0 3 2 6 6 6 1 0 2 0 2-1v-7h-2c-2 0-4-2-4-4s2-4 4-4 4 2 4 4v2h4v-2c0-2 2-4 4-4s4 2 4 4-2 4-4 4h-2v7c0 1 1 1 2 1 4 0 6-3 6-6 0-2-1-4-3-5 3-1 5-4 5-7 0-5-5-10-10-10z' fill='%23333' fill-opacity='0.3'/%3E%3C/svg%3E");
+      background-size: 80px 80px;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+      overflow-y: auto;
+    }
+
+    .main-container {
+      width: 80%;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .content-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid #444;
+      padding: 20px;
+      color: white;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .content-box:last-child {
+      margin-bottom: 0;
+    }
+
+    h1 {
+      margin: 0;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .title_of_site {
+      min-height: 400px;
+    }
+
+    .medium {
+      min-height: 200px;
+    }
+
+    .short {
+      min-height: 100px;
+    }
+
+    .first-container {
+      position: relative;
+      background-image: url("IMG_5960.PNG");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right bottom;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      filter: grayscale(100%);
+    }
+
+    .title-block {
+      background-color: black;
+      border: 2px solid white;
+      margin: 0;
+      border-bottom: none;
+    }
+
+    .title-block:first-child {
+      border-bottom: none;
+      border-right: none;
+    }
+
+    .title-block:last-child {
+      border-top: none;
+      border-bottom: 2px solid white;
+      border-right: none;
+    }
+
+    .gothic-title {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: 4.5em;
+      color: white;
+      margin: 0;
+      white-space: nowrap;
+      text-align: left;
+      padding: 10px 20px;
+    }
+
+    .soroka-title {
+      font-size: 6.5em;
+    }
+
+    .masters-container {
+      flex-direction: column;
+      padding: 0;
+      align-items: stretch;
+    }
+
+    .masters-header {
+      text-align: center;
+    }
+
+    .masters-header h2 {
+      font-family: 'UnifrakturMaguntia', cursive;
+      background: rgba(96, 10, 10, 0.7);
+      border: 4px solid rgba(107, 9, 9, 0.9);
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: 4.5em;
+      color: white;
+      margin: 0;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    .masters-content {
+      background-color: black;
+      flex: 1;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      margin-top: 0;
+      font-size: 3.5em;
+    }
+
+    .about {
+      font-family: 'UnifrakturMaguntia', cursive;
+      background: rgba(96, 10, 10, 0.7);
+      border: 4px solid rgba(107, 9, 9, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      padding: 2px;
+    }
+
+    h3 {
+      margin: 10px 0;
+    }
+
+    h6 {
+      margin: 5px 0;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    .card-container {
+      background-color: rgba(30, 30, 30, 0.91);
+      border-radius: 5px;
+      box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+      color: #B3B8CD;
+      padding-top: 30px;
+      position: relative;
+      width: 350px;
+      max-width: 100%;
+      text-align: center;
+    }
+
+
+
+    .card-container .round {
+      border: 1px solid rgba(96, 10, 10, 0.7);
+      border-radius: 50%;
+      padding: 7px;
+    }
+
+    button.primary {
+      background-color: rgba(96, 10, 10, 0.7);
+      border: 1px solid rgba(145, 0, 0, 0.7);
+      border-radius: 3px;
+      color: rgba(0, 0, 0, 0.45);
+      font-family: Montserrat, sans-serif;
+      font-weight: 500;
+      padding: 10px 25px;
+    }
+
+    button.primary.ghost {
+      background-color: transparent;
+      color: rgba(96, 10, 10, 0.7);
+    }
+
+    .skills {
+      background-color: rgba(0, 0, 0, 0.9);
+      text-align: left;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    .skills ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .skills ul li {
+      border: 1px solid rgba(96, 10, 10, 0.7);
+      border-radius: 2px;
+      display: inline-block;
+      font-size: 12px;
+      margin: 0 7px 7px 0;
+      padding: 7px;
+    }
+
+    .masters-content {
+      background-color: black;
+      flex: 1;
+      padding: 20px;
+      overflow-x: auto;
+      display: flex;
+      gap: 20px;
+    }
+
+    .masters-scroll {
+      display: flex;
+      gap: 20px;
+      min-width: min-content;
+    }
+
+    .card-container {
+      background-color: rgba(0, 0, 0, 0.87);
+      border-radius: 5px;
+      box-shadow: 0px 10px 20px -10px rgba(145, 0, 0, 0.7);
+      color: #B3B8CD;
+      padding-top: 30px;
+      position: relative;
+      width: 350px;
+      max-width: 100%;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .data {
+      display: flex;
+      width: 100%;
+      gap: 300px;
+      padding: 0;
+    }
+
+    .calendar-section {
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .booking-section {
+      width: 30%;
+      background: rgba(128, 128, 128, 0.3);
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      backdrop-filter: blur(5px);
+    }
+
+    section.mounth {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    /****/
+    /* Left Bar */
+    /****/
+    nav.sections {
+      overflow: hidden;
+      display: block;
+      float: left;
+      width: 82px; height: auto;
+      margin-right: 20px;
+      background: #3bc1f8;
+      box-shadow: 0 1px 1px rgba(78,200,247,.35);
+      border-radius: 5px;
+      text-aling: center;
+    }
+    nav.sections li a {
+      display: block;
+      width: 100%; height: 82px;
+    }
+    nav.sections li:hover,
+    nav.sections li.active {
+      background: #00aced;
+      box-shadow: inset 0 1px 1px rgba(0,0,0,.07);
+    }
+    nav.sections li.notes a,
+    nav.sections li.calendar a,
+    nav.sections li.settings a {
+      background: url('http://ysfu.net/sprite.png') no-repeat;
+    }
+    nav.sections li.notes a {
+      background-position: 25px 25px;
+    }
+    nav.sections li.calendar a {
+      background-position: 25px -57px;
+    }
+    nav.sections li.settings a {
+      background-position: 25px -139px;
+    }
+
+    /****/
+    /* Calendar */
+    /****/
+    section.mounth {
+      overflow: hidden;
+      display: block;
+      float: left;
+      width: 420px; height: auto;
+      background: #fff;
+      box-shadow: 0 1px 1px rgba(0,0,0,.25);
+      border-radius: 5px;
+    }
+    header {
+      position: relative;
+      display: block;
+      height: 80px;
+      background: #e9eaf0;
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,.06);
+    }
+    header h1 {
+      margin-left: 30px;
+      line-height: 80px;
+    }
+    header nav {
+      overflow: hidden;
+      position: absolute;
+      display: block;
+      right: 30px; top: 30px;
+    }
+    header nav span {
+      display: block;
+      float: left;
+      width: 11px; height: 20px;
+      margin-left: 30px;
+      cursor: pointer;
+      background: url('http://ysfu.net/sprite.png') no-repeat;
+    }
+    header nav span:first-of-type {
+      background-position: -77px -4px;
+    }
+    header nav span:first-of-type:hover {
+      background-position: -106px -4px;
+    }
+    header nav span:last-of-type {
+      background-position: -90px -4px;
+    }
+    header nav span:last-of-type:hover {
+      background-position: -119px -4px;
+    }
+
+    article {padding: 6px 0 25px 25px}
+    article b,
+    article span {
+      display: block;
+      float: left;
+      width: 45px; height: 45px;
+      margin: 4px;
+      text-align: center;
+    }
+    article b {
+      font: 600 16px/45px 'Open Sans';
+      color: #91d9ff;
+    }
+    article span {
+      font: 300 19px/45px 'Open Sans';
+      color: #4c5373;
+      box-shadow: inset 0 0 1px 1px #d9dce5;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    article span.disable {
+      color: #b6bacc;
+      box-shadow: inset 0 0 1px 1px #f3f4f7;
+    }
+    article span:not(.disable):hover {
+      background: #cdd0dd;
+      box-shadow:
+              inset 0 0 1px 1px #d9dce5,
+              0 1px 3px -1px #cdd0dd;
+    }
+    article span:not(.disable):active {
+      background: #b9becf;
+      box-shadow:
+              inset 0 1px 2px rgba(0,0,0,.18),
+              0 0 0 #cdd0dd;
+    }
+    article span.active,
+    article span.active:hover,
+    article span.active:active {
+      color: #fff;
+      box-shadow:
+              inset 0 0 1px 1px #ff8263,
+              0 1px 3px -1px #ff8263;
+      background: #ff8263;
+    }
+    article div {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+
+
+    .booking-slots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .time-slot {
+      background: linear-gradient(135deg, rgba(96, 10, 10, 0.8), rgba(145, 0, 0, 0.6));
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .time-slot:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .time-slot.popular {
+      background: linear-gradient(135deg, rgba(255, 100, 0, 0.8), rgba(255, 50, 0, 0.6));
+      border: 2px solid rgba(255, 200, 0, 0.5);
+    }
+
+    .slot-time {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .slot-master {
+      font-size: 0.9em;
+      opacity: 0.9;
+      margin-bottom: 8px;
+    }
+
+    .slot-tag {
+      display: inline-block;
+      background: rgba(0,0,0,0.3);
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.8em;
+    }
+
+    .booking-header {
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .booking-header h3 {
+      font-size: 2em;
+      margin: 0 0 10px 0;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .booking-date {
+      font-size: 1.2em;
+      color: #ff6b6b;
+      font-weight: bold;
+    }
+
+
+    .types {
+      display: flex;
+      width: 100%;
+      padding: 0;
+      background-color: black;
+    }
+
+    .image-part {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+    }
+
+    .image-part img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .select-part {
+      width: 20%;
+      order: 2;
+    }
+
+
+    ul {
+      list-style:none;
+      margin:0;
+      padding:0;
+      width:100%;
+      box-shadow: 0 0 5px #111;
+    }
+
+    ul li label {
+      background: rgba(96, 10, 10, 0.7);
+      border-top:1px solid rgba(145, 0, 0, 0.7);
+      border-bottom:1px solid rgba(70, 0, 0, 0.9);
+      color: #fff;
+      text-shadow: 0 1px 1px #000;
+      letter-spacing: 0.09em;
+      background: linear-gradient(to bottom, rgba(96, 10, 10, 0.8), rgba(70, 0, 0, 0.9));
+    }
+
+    ul li input[type='checkbox'] {
+      display: none;
+    }
+
+    ul li label {
+      display:block;
+      padding:12px;
+      width:100%;
+    }
+
+    ul li span {
+      display:inline;
+      float:right;
+      background:rgba(70, 0, 0, 0.7);
+      border:1px solid rgba(96, 10, 10, 0.7);
+      border-bottom:1px solid rgba(145, 0, 0, 0.7);
+      padding:4px 6px;
+      font-size:10px;
+      border-radius: 12px;
+      box-shadow: inset 0 0 10px #111;
+      position:relative;
+    }
+
+    ul li label:hover {
+      background: rgba(145, 0, 0, 0.7);
+      background: linear-gradient(to bottom, rgba(145, 0, 0, 0.7), rgba(96, 10, 10, 0.8));
+    }
+
+    ul li label:hover span {
+      background:rgba(96, 10, 10, 0.8);
+    }
+
+    ul li input[type='checkbox']:checked ~ label {
+      background: rgba(145, 0, 0, 0.9);
+      border-top:1px solid rgba(200, 0, 0, 0.7);
+      border-bottom:1px solid rgba(96, 10, 10, 0.9);
+      background: linear-gradient(to bottom, rgba(145, 0, 0, 0.9), rgba(96, 10, 10, 0.9));
+    }
+
+    ul li input[type='checkbox']:checked ~ label span {
+      background: rgba(70, 0, 0, 0.9);
+      border-top:1px solid rgba(96, 10, 10, 0.9);
+      border-bottom:1px solid rgba(145, 0, 0, 0.7);
+      box-shadow: inset 0 0 5px #111;
+    }
+
+    ul li input[type='checkbox']:checked ~ .options {
+      height: auto;
+      display:block;
+      min-height:40px;
+      max-height:400px;
+    }
+
+    ul ul {
+      background:rgba(0, 0, 0, 0.8);
+      margin:0;
+      padding:0;
+      box-shadow: inset 0 2px 2px rgba(0,0,0,0.5);
+    }
+
+    ul ul li a {
+      display:block;
+      padding:6px 12px;
+      color:#ccc;
+      text-decoration:none;
+    }
+
+    ul ul li a:hover {
+      color:#fff;
+      background: rgba(96, 10, 10, 0.5);
+    }
+
+    ul ul li a span {
+      color:#ccc;
+      background:none;
+      border:1px solid #444;
+      box-shadow: none;
+    }
+
+    ul ul li {
+      border-bottom:1px solid #444;
+    }
+
+    ul ul li:first-child {
+      padding-top:6px;
+    }
+
+    ul ul li:last-child {
+      padding-bottom:6px;
+      border:0;
+    }
+
+    .options {
+      height: 0;
+      display: block;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+<div class="main-container">
+  <div class="content-box title_of_site first-container">
+    <div class="title-block">
+      <h1 class="gothic-title">Тату-салон</h1>
+    </div>
+    <div class="title-block">
+      <h1 class="gothic-title soroka-title">"Сорока"</h1>
+    </div>
+  </div>
+
+
+  <div class="content-box about">
+    <h2>Кто мы?</h2>
+    <div> Какой-то текст</div>
+    <div> Какой-то текст длинный</div>
+    <div> Какой-то текст длинный</div>
+    <div> Какой-то текст длинный</div>
+    <div> Какой-то текст красивый и прекрасный</div>
+    <div> Какой-то текст закончился</div>
+
+  </div>
+  <div class="content-box masters-container">
+    <div class="masters-header">
+      <h2>МАСТЕРА</h2>
+    </div>
+
+    <div class="masters-content">
+      <div class="masters-scroll">
+        <div class="card-container">
+          <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+          <h3>Ивана Иванова</h3>
+          <h6>Москва</h6>
+          <p>Пирсинг мастер <br/> и специалист по пирсингу</p>
+          <div class="buttons">
+            <button class="primary">Написать</button>
+            <button class="primary ghost">Посмотреть работы</button>
+          </div>
+          <div class="skills">
+            <h6>Сильные стороны</h6>
+            <ul>
+              <li>Пирсинг</li>
+              <li>Иной пирсинг</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-container">
+          <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+          <h3>Ивана Иванова</h3>
+          <h6>Москва</h6>
+          <p>Пирсинг мастер <br/> и специалист по пирсингу</p>
+          <div class="buttons">
+            <button class="primary">Написать</button>
+            <button class="primary ghost">Посмотреть работы</button>
+          </div>
+          <div class="skills">
+            <h6>Сильные стороны</h6>
+            <ul>
+              <li>Пирсинг</li>
+              <li>Иной пирсинг</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-container">
+          <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+          <h3>Ивана Иванова</h3>
+          <h6>Москва</h6>
+          <p>Пирсинг мастер <br/> и специалист по пирсингу</p>
+          <div class="buttons">
+            <button class="primary">Написать</button>
+            <button class="primary ghost">Посмотреть работы</button>
+          </div>
+          <div class="skills">
+            <h6>Сильные стороны</h6>
+            <ul>
+              <li>Пирсинг</li>
+              <li>Иной пирсинг</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-container">
+          <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+          <h3>Ивана Иванова</h3>
+          <h6>Москва</h6>
+          <p>Пирсинг мастер <br/> и специалист по пирсингу</p>
+          <div class="buttons">
+            <button class="primary">Написать</button>
+            <button class="primary ghost">Посмотреть работы</button>
+          </div>
+          <div class="skills">
+            <h6>Сильные стороны</h6>
+            <ul>
+              <li>Пирсинг</li>
+              <li>Иной пирсинг</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+  <div class="content-box data">
+    <div class="calendar-section">
+      <section class="mounth" id="january">
+        <header>
+          <h1>JANUARY 2013</h1>
+          <nav role='padigation'>
+            <span></span>
+            <span></span>
+          </nav>
+        </header>
+
+        <article>
+          <div class="days">
+            <b>SU</b>
+            <b>MO</b>
+            <b>TU</b>
+            <b>WE</b>
+            <b>TH</b>
+            <b>FR</b>
+            <b>SA</b>
+          </div>
+          <div class="dates">
+            <span class="disable">30</span>
+            <span class="disable">31</span>
+
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+            <span>13</span>
+            <span>14</span>
+            <span>15</span>
+            <span class="active">16</span>
+            <span>17</span>
+            <span>18</span>
+            <span>19</span>
+            <span>20</span>
+            <span>21</span>
+            <span>22</span>
+            <span>23</span>
+            <span>24</span>
+            <span>25</span>
+            <span>26</span>
+            <span>27</span>
+            <span>28</span>
+            <span>29</span>
+            <span>30</span>
+            <span>31</span>
+
+            <span class="disable">1</span>
+            <span class="disable">2</span>
+            <span class="disable">3</span>
+            <span class="disable">4</span>
+            <span class="disable">5</span>
+            <span class="disable">6</span>
+            <span class="disable">7</span>
+            <span class="disable">8</span>
+            <span class="disable">9</span>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <div class="booking-section">
+      <div class="booking-header">
+        <h3>СВОБОДНЫЕ ЗАПИСИ</h3>
+        <div class="booking-date">Выбрана дата: 16 января 2013</div>
+      </div>
+
+      <div class="booking-slots">
+        <div class="time-slot popular">
+          <div class="slot-time">10:00 - 11:00</div>
+          <div class="slot-master">Мастер: Ивана</div>
+          <span class="slot-tag">Свободно</span>
+        </div>
+
+        <div class="time-slot">
+          <div class="slot-time">14:00 - 15:00</div>
+          <div class="slot-master">Мастер: Алексей</div>
+          <span class="slot-tag">Свободно</span>
+        </div>
+
+        <div class="time-slot popular">
+          <div class="slot-time">17:00 - 18:00</div>
+          <div class="slot-master">Мастер: Мария</div>
+          <span class="slot-tag">Свободно</span>
+        </div>
+
+        <div class="time-slot">
+          <div class="slot-time">19:00 - 20:00</div>
+          <div class="slot-master">Мастер: Дмитрий</div>
+          <span class="slot-tag">VIP запись</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-box types">
+    <div class="select-part">
+      <ul>
+        <li class="block">
+          <input type="checkbox" name="item" id="item1" />
+          <label for="item1">Черно-белые тату <span>24</span></label>
+          <ul class="options">
+            <li><a href="#">Минимализм</a></li>
+            <li><a href="#">Лайнворк</a></li>
+            <li><a href="#">Геометрия</a></li>
+          </ul>
+        </li>
+        <li class="block">
+          <input type="checkbox" name="item" id="item2" />
+          <label for="item2">Цветные тату <span>34</span></label>
+          <ul class="options">
+            <li><a href="#">Реализм</a></li>
+            <li><a href="#">Олд скул</a></li>
+            <li><a href="#">Акварель</a></li>
+          </ul>
+        </li>
+        <li class="block">
+          <input type="checkbox" name="item" id="item3" />
+          <label for="item3">Пирсинг <span>18</span></label>
+          <ul class="options">
+            <li><a href="#">Уши</a></li>
+            <li><a href="#">Лицо</a></li>
+            <li><a href="#">Тело</a></li>
+          </ul>
+        </li>
+        <li class="block">
+          <input type="checkbox" name="item" id="item4" />
+          <label for="item4">Перекрытие <span>7</span></label>
+          <ul class="options">
+            <li><a href="#">Лазерное удаление</a></li>
+            <li><a href="#">Художественное</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="image-part">
+      <img src="tild3163-3964-4031-b263-316432323066__40621352411_c821f370.jpg" alt="Пример работы">
+    </div>
+  </div>  </div>
+
+
+
+
+</body>
+</html>
