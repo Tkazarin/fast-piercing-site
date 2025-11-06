@@ -1,1367 +1,1233 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Студия пирсинга "Сорока"</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Montserrat:wght@300;400;500;600;700&display=swap');
-
-    :root {
-      --primary: #8b0000;
-      --primary-dark: #5a0000;
-      --primary-light: #a83232;
-      --accent: #ff6b6b;
-      --text: #f5f5f5;
-      --text-secondary: #cccccc;
-      --bg-dark: #0a0a0a;
-      --bg-card: rgba(30, 30, 30, 0.85);
-      --border: rgba(139, 0, 0, 0.4);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      background-color: var(--bg-dark);
-      background-image:
-              radial-gradient(circle at 15% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 20%),
-              radial-gradient(circle at 85% 30%, rgba(139, 0, 0, 0.1) 0%, transparent 20%),
-              radial-gradient(circle at 50% 80%, rgba(139, 0, 0, 0.05) 0%, transparent 20%);
-      font-family: 'Montserrat', sans-serif;
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    .main-container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px 0;
-    }
-
-    .content-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 30px;
-      color: var(--text);
-      margin-bottom: 30px;
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .content-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(139, 0, 0, 0.2);
-    }
-
-    .content-box:last-child {
-      margin-bottom: 0;
-    }
-
-    .title_of_site {
-      min-height: 55vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .first-container {
-      background:
-              linear-gradient(135deg, rgba(10, 10, 10, 0.9) 1%, rgba(30, 0, 0, 0.8) 5%),
-              url("photo_2025-11-04 21.54.29.jpeg") no-repeat center;
-      background-size: cover;
-      border: none;
-    }
-
-    .title-block {
-      background: rgba(0, 0, 0, 0.7);
-      border-left: 4px solid var(--primary);
-      padding: 20px 30px;
-      margin-bottom: 15px;
-      backdrop-filter: blur(5px);
-      width: 80%;
-      max-width: 500px;
-    }
-
-    .title-block:last-child {
-      margin-bottom: 0;
-    }
-
-    .gothic-title {
-      font-family: 'UnifrakturMaguntia', cursive;
-      font-size: 3.5rem;
-      color: var(--text);
-      margin: 0;
-      text-align: left;
-      line-height: 1.1;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    }
-
-    .soroka-title {
-      font-size: 4.5rem;
-      color: var(--accent);
-    }
-
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .about h2 {
-      font-family: 'UnifrakturMaguntia', cursive;
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      color: var(--accent);
-      grid-column: 1 / -1;
-      text-align: center;
-    }
-
-    .marquee {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-      border-radius: 8px;
-      padding: 15px 0;
-      margin-bottom: 20px;
-      grid-column: 1 / -1;
-    }
-
-    .marquee__inner {
-      display: flex;
-      animation: marquee 20s linear infinite;
-      width: max-content;
-    }
-
-    .marquee__line {
-      flex-shrink: 0;
-      padding: 0 20px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 2rem;
-      text-transform: uppercase;
-      color: white;
-      white-space: nowrap;
-    }
-
-    @keyframes marquee {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    .marquee:hover .marquee__inner {
-      animation-play-state: paused;
-    }
-
-    @keyframes marquee {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    .about-content {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .about-text {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: var(--text-secondary);
-    }
-
-    .about-image {
-      border-radius: 8px;
-      overflow: hidden;
-      height: 300px;
-      background: linear-gradient(45deg, var(--primary-dark), var(--primary-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.2rem;
-    }
-
-    .masters-container {
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .masters-header {
-      text-align: center;
-      padding: 30px;
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-      border-radius: 12px 12px 0 0;
-    }
-
-    .masters-header h2 {
-      font-family: 'UnifrakturMaguntia', cursive;
-      font-size: 3rem;
-      color: white;
-      margin: 0;
-    }
-
-    .masters-content {
-      padding: 30px;
-      overflow-x: auto;
-    }
-
-    .masters-scroll {
-      display: flex;
-      gap: 25px;
-      min-width: min-content;
-    }
-
-    .card-container {
-      background: var(--bg-card);
-      border-radius: 12px;
-      box-shadow: 0 10px 20px -10px rgba(0,0,0,0.75);
-      color: var(--text-secondary);
-      padding: 30px 20px 20px;
-      position: relative;
-      width: 300px;
-      max-width: 100%;
-      text-align: center;
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-      border: 1px solid var(--border);
-    }
-
-    .card-container:hover {
-      transform: translateY(-10px);
-    }
-
-    .card-container .round {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid var(--primary);
-      padding: 5px;
-      margin: 0 auto 15px;
-      overflow: hidden;
-    }
-
-    .card-container .round img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .card-container h3 {
-      font-size: 1.5rem;
-      margin: 10px 0 5px;
-      color: var(--text);
-    }
-
-    .card-container h6 {
-      font-size: 0.9rem;
-      margin: 0 0 15px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .card-container p {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    button.primary {
-      background: var(--primary);
-      border: none;
-      border-radius: 30px;
-      color: white;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      padding: 10px 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    button.primary:hover {
-      background: var(--primary-light);
-      transform: translateY(-2px);
-    }
-
-    button.primary.ghost {
-      background: transparent;
-      border: 1px solid var(--primary);
-      color: var(--primary);
-    }
-
-    button.primary.ghost:hover {
-      background: rgba(139, 0, 0, 0.1);
-    }
-
-    .skills {
-      background: rgba(0, 0, 0, 0.5);
-      text-align: left;
-      padding: 15px;
-      border-radius: 8px;
-    }
-
-    .skills h6 {
-      font-size: 0.8rem;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    .skills ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .skills ul li {
-      display: inline-block;
-      background: rgba(139, 0, 0, 0.2);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      font-size: 0.75rem;
-      margin: 0 5px 5px 0;
-      padding: 5px 10px;
-    }
-
-    .data {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 30px;
-    }
-
-    .calendar-section {
-      background: var(--bg-card);
-      border-radius: 12px;
-      padding: 20px;
-      border: 1px solid var(--border);
-    }
-
-    .calendar {
-      width: 100%;
-    }
-
-    .calendar-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .calendar-header h3 {
-      font-size: 1.5rem;
-      color: var(--text);
-    }
-
-    .calendar-nav {
-      display: flex;
-      gap: 10px;
-    }
-
-    .calendar-nav button {
-      background: var(--primary);
-      border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      color: white;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 5px;
-    }
-
-    .calendar-day {
-      text-align: center;
-      padding: 10px 5px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    .calendar-date {
-      text-align: center;
-      padding: 12px 5px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .calendar-date:hover {
-      background: rgba(139, 0, 0, 0.2);
-    }
-
-    .calendar-date.active {
-      background: var(--primary);
-      color: white;
-    }
-
-    .calendar-date.disabled {
-      color: #555;
-      cursor: not-allowed;
-    }
-
-    .booking-section {
-      background: var(--bg-card);
-      border-radius: 12px;
-      padding: 25px;
-      border: 1px solid var(--border);
-    }
-
-    .booking-header {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 20px;
-      margin-bottom: 25px;
-    }
-
-    .booking-header h3 {
-      font-size: 1.8rem;
-      margin: 0 0 10px 0;
-      color: var(--text);
-    }
-
-    .booking-date {
-      font-size: 1.1rem;
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .booking-slots {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-    }
-
-    .time-slot {
-      background: linear-gradient(135deg, rgba(139, 0, 0, 0.3), rgba(90, 0, 0, 0.2));
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 18px;
-      text-align: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .time-slot:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3);
-      border-color: var(--primary);
-    }
-
-    .time-slot.popular {
-      background: linear-gradient(135deg, rgba(255, 107, 107, 0.3), rgba(139, 0, 0, 0.2));
-      border: 1px solid rgba(255, 107, 107, 0.5);
-    }
-
-    .slot-time {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-
-    .slot-master {
-      font-size: 0.9rem;
-      opacity: 0.9;
-      margin-bottom: 10px;
-      color: var(--text-secondary);
-    }
-
-    .slot-tag {
-      display: inline-block;
-      background: rgba(139, 0, 0, 0.5);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    .types {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 0;
-      padding: 0;
-      overflow: hidden;
-      height: 500px;
-    }
-
-    .select-part {
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-      display: flex;
-      flex-direction: column;
-    }
-
-    .menu-item {
-      padding: 18px 20px;
-      color: white;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .menu-item:hover {
-      background: rgba(255, 255, 255, 0.1);
-      padding-left: 25px;
-    }
-
-    .menu-item.active {
-      background: rgba(255, 255, 255, 0.15);
-      border-left: 4px solid white;
-    }
-
-    .image-part {
-      background: rgba(255, 255, 255, 0.05);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .image-part img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      filter: brightness(0.85) saturate(1.4) hue-rotate(-30deg);
-      transition: filter 0.4s ease;
-    }
-
-    .image-part img:hover {
-      filter: brightness(1) saturate(1.6) hue-rotate(-40deg);
-    }
-
-
-    .piercing-catalog {
-      padding: 40px 30px;
-      overflow: hidden;
-    }
-
-    .catalog-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .catalog-header h2 {
-      font-family: 'UnifrakturMaguntia', cursive;
-      font-size: 3rem;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-
-    .catalog-header p {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-    }
-
-    .catalog-scroll-container {
-      position: relative;
-      margin-bottom: 40px;
-    }
-
-    .catalog-track {
-      display: flex;
-      gap: 25px;
-      padding: 20px 10px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
-    .catalog-track::-webkit-scrollbar {
-      display: none;
-    }
-
-    .catalog-track:hover .piercing-item {
-      opacity: 0.7;
-    }
-
-    .catalog-track:hover .piercing-item:hover {
-      opacity: 1;
-    }
-
-    .piercing-item {
-      flex: 0 0 320px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 25px;
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .piercing-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(139, 0, 0, 0.1), transparent);
-      transition: left 0.6s ease;
-    }
-
-    .piercing-item:hover::before {
-      left: 100%;
-    }
-
-    .piercing-item:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 15px 35px rgba(139, 0, 0, 0.4);
-      border-color: var(--primary);
-    }
-
-    .scroll-nav {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .scroll-btn {
-      background: var(--primary);
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      color: white;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .scroll-btn:hover {
-      background: var(--primary-light);
-      transform: scale(1.1);
-    }
-
-    .scroll-btn:active {
-      transform: scale(0.95);
-    }
-
-    .item-image {
-      position: relative;
-      height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .image-placeholder {
-      font-size: 4rem;
-      opacity: 0.7;
-      transition: transform 0.3s ease;
-    }
-
-    .piercing-item:hover .image-placeholder {
-      transform: scale(1.1) rotate(10deg);
-    }
-
-    .item-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: var(--primary);
-      color: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    .item-badge.new {
-      background: #ff6b6b;
-    }
-
-    .item-badge.popular {
-      background: #ffa726;
-    }
-
-    .item-content h3 {
-      font-size: 1.4rem;
-      color: var(--text);
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    .item-desc {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin-bottom: 15px;
-    }
-
-    .item-meta {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
-    }
-
-    .item-meta span {
-      background: rgba(139, 0, 0, 0.2);
-      border: 1px solid var(--border);
-      padding: 4px 12px;
-      border-radius: 15px;
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-    }
-
-    .item-price {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 15px;
-    }
-
-    .catalog-footer {
-      border-top: 1px solid var(--border);
-      padding-top: 30px;
-    }
-
-    .materials-info h4 {
-      color: var(--text);
-      margin-bottom: 15px;
-      font-size: 1.2rem;
-    }
-
-    .materials-list {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .material-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text-secondary);
-    }
-
-    .material-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    .material-dot.titanium {
-      background: #6c757d;
-    }
-
-    .material-dot.bioplast {
-      background: #20c997;
-    }
-
-    .material-dot.gold {
-      background: #ffd700;
-    }
-
-    .material-dot.steel {
-      background: #adb5bd;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateX(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .piercing-item {
-      animation: slideIn 0.6s ease forwards;
-    }
-
-    .piercing-item:nth-child(2) { animation-delay: 0.1s; }
-    .piercing-item:nth-child(3) { animation-delay: 0.2s; }
-    .piercing-item:nth-child(4) { animation-delay: 0.3s; }
-    .piercing-item:nth-child(5) { animation-delay: 0.4s; }
-    .piercing-item:nth-child(6) { animation-delay: 0.5s; }
-
-    .magpie-container {
-      background: linear-gradient(135deg, rgba(30, 0, 0, 0.8), rgba(60, 0, 0, 0.6));
-      border: 2px solid var(--primary);
-      padding: 30px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .magpie-character {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .magpie {
-      font-size: 8rem;
-      filter: grayscale(0.3);
-      animation: float 3s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) rotate(-5deg);
-      }
-      50% {
-        transform: translateY(-10px) rotate(5deg);
-      }
-    }
-
-    .speech-bubble {
-      position: relative;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      padding: 25px;
-      max-width: 400px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      animation: bubblePop 0.6s ease-out;
-    }
-
-    @keyframes bubblePop {
-      0% {
-        transform: scale(0.8);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    .bubble-content h4 {
-      color: var(--primary-dark);
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-
-    .bubble-content p {
-      color: #333;
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-
-    .social-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 18px;
-      background: rgba(139, 0, 0, 0.1);
-      border: 2px solid transparent;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      color: #333;
-    }
-
-    .social-link:hover {
-      background: rgba(139, 0, 0, 0.15);
-      border-color: var(--primary);
-      transform: translateX(5px);
-    }
-
-    .social-link.telegram:hover {
-      background: rgba(0, 136, 204, 0.1);
-      border-color: #0088cc;
-    }
-
-    .social-icon {
-      font-size: 1.5rem;
-      width: 30px;
-      text-align: center;
-    }
-
-    .social-text {
-      font-weight: 600;
-      font-size: 1rem;
-    }
-
-    .bubble-arrow {
-      position: absolute;
-      left: -15px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 0;
-      height: 0;
-      border-top: 15px solid transparent;
-      border-bottom: 15px solid transparent;
-      border-right: 15px solid rgba(255, 255, 255, 0.95);
-    }
-
-    .magpie::after {
-      content: '';
-      position: absolute;
-      top: 120px;
-      right: 180px;
-      width: 80px;
-      height: 40px;
-      background: #ff6b6b;
-      border-radius: 50%;
-      animation: blink 2s infinite;
-    }
-
-    @keyframes blink {
-      0%, 50% {
-        opacity: 1;
-      }
-      51%, 100% {
-        opacity: 0;
-      }
-    }
-
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Студия пирсинга "Сорока"</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
+
+        :root {
+            --beige: #f8f5f2;
+            --beige-dark: #e8e2dc;
+            --beige-darker: #d8cec4;
+            --gray-light: #f0f0f0;
+            --gray: #8a8a8a;
+            --gray-dark: #5a5a5a;
+            --black: #2a2a2a;
+            --white: #ffffff;
+            --accent: #a67c52;
+            --accent-light: #bf9d7a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: var(--white);
+            font-family: 'Inter', sans-serif;
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .content-box {
+            background: var(--white);
+            border: 1px solid var(--beige-dark);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .content-box:last-child {
+            margin-bottom: 0;
+        }
+
+        .title_of_site {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+            background: var(--beige);
+            border: none;
+            padding: 60px 40px;
+        }
+
+        .first-container {
+            background:
+                    linear-gradient(135deg, rgba(248, 245, 242, 0.85) 0%, rgba(248, 245, 242, 0.7) 100%),
+                    url("photo_2025-11-04 21.54.29.jpeg") no-repeat center;
+            background-size: cover;
+            background-blend-mode: overlay;
+            filter: grayscale(100%) sepia(30%) brightness(90%);
+        }
+
+        .title-block {
+            background: rgba(255, 255, 255, 0.85);
+            border-left: 3px solid var(--accent);
+            padding: 30px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .title-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .gothic-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--black);
+            margin: 0;
+            text-align: left;
+            line-height: 1.1;
+            font-weight: 500;
+        }
+
+        .soroka-title {
+            font-size: 4rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--black);
+            grid-column: 1 / -1;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .marquee {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: var(--beige);
+            border-radius: 6px;
+            padding: 15px 0;
+            margin-bottom: 30px;
+            grid-column: 1 / -1;
+        }
+
+        .marquee__inner {
+            display: flex;
+            animation: marquee 20s linear infinite;
+            width: max-content;
+        }
+
+        .marquee__line {
+            flex-shrink: 0;
+            padding: 0 20px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: var(--gray-dark);
+            white-space: nowrap;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .marquee:hover .marquee__inner {
+            animation-play-state: paused;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--gray-dark);
+        }
+
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 300px;
+            background: var(--beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 1.1rem;
+            border: 1px solid var(--beige-dark);
+        }
+
+        .masters-container {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .masters-header {
+            text-align: center;
+            padding: 40px;
+            background: var(--beige);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .masters-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--black);
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .masters-content {
+            padding: 40px;
+            overflow-x: auto;
+        }
+
+        .masters-scroll {
+            display: flex;
+            gap: 30px;
+            min-width: min-content;
+        }
+
+        .card-container {
+            background: var(--white);
+            border-radius: 8px;
+            color: var(--gray-dark);
+            padding: 30px 25px 25px;
+            position: relative;
+            width: 280px;
+            max-width: 100%;
+            text-align: center;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--beige-dark);
+        }
+
+        .card-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-container .round {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid var(--beige-dark);
+            padding: 4px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .card-container:hover .round {
+            border-color: var(--accent);
+        }
+
+        .card-container .round img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .card-container h3 {
+            font-size: 1.3rem;
+            margin: 10px 0 5px;
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .card-container h6 {
+            font-size: 0.85rem;
+            margin: 0 0 15px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .card-container p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        button.primary {
+            background: var(--accent);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        button.primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        button.primary.ghost {
+            background: transparent;
+            border: 1px solid var(--beige-dark);
+            color: var(--gray-dark);
+        }
+
+        button.primary.ghost:hover {
+            background: var(--beige);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .skills {
+            background: var(--beige);
+            text-align: left;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .skills h6 {
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .skills ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .skills ul li {
+            display: inline-block;
+            background: var(--white);
+            border: 1px solid var(--beige-dark);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin: 0 5px 5px 0;
+            padding: 5px 10px;
+            color: var(--gray-dark);
+        }
+
+        .data {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 30px;
+        }
+
+        .calendar-section {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid var(--beige-dark);
+        }
+
+        .calendar {
+            width: 100%;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-header h3 {
+            font-size: 1.3rem;
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .calendar-nav button {
+            background: var(--beige);
+            border: 1px solid var(--beige-dark);
+            border-radius: 4px;
+            width: 36px;
+            height: 36px;
+            color: var(--gray-dark);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-nav button:hover {
+            background: var(--beige-dark);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day {
+            text-align: center;
+            padding: 10px 5px;
+            font-weight: 600;
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .calendar-date {
+            text-align: center;
+            padding: 12px 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--gray-dark);
+        }
+
+        .calendar-date:hover {
+            background: var(--beige);
+        }
+
+        .calendar-date.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .calendar-date.disabled {
+            color: var(--beige-darker);
+            cursor: not-allowed;
+        }
+
+        .booking-section {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            border: 1px solid var(--beige-dark);
+        }
+
+        .booking-header {
+            border-bottom: 1px solid var(--beige-dark);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .booking-header h3 {
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .booking-date {
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .booking-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .time-slot {
+            background: var(--beige);
+            border: 1px solid var(--beige-dark);
+            border-radius: 6px;
+            padding: 18px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .time-slot:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+
+        .time-slot.popular {
+            background: var(--white);
+            border: 1px solid var(--accent);
+        }
+
+        .slot-time {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--black);
+        }
+
+        .slot-master {
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            color: var(--gray);
+        }
+
+        .slot-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .types {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 500px;
+        }
+
+        .select-part {
+            background: var(--beige);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item {
+            padding: 20px 25px;
+            color: var(--gray-dark);
+            text-decoration: none;
+            border-bottom: 1px solid var(--beige-dark);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .menu-item:hover {
+            background: var(--beige-dark);
+            padding-left: 30px;
+        }
+
+        .menu-item.active {
+            background: var(--white);
+            border-left: 3px solid var(--accent);
+            color: var(--black);
+        }
+
+        .image-part {
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .image-part img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .piercing-catalog {
+            padding: 40px;
+            overflow: hidden;
+        }
+
+        .catalog-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .catalog-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--black);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .catalog-header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        .catalog-scroll-container {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .catalog-track {
+            display: flex;
+            gap: 25px;
+            padding: 20px 10px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .catalog-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .catalog-track:hover .piercing-item {
+            opacity: 0.7;
+        }
+
+        .catalog-track:hover .piercing-item:hover {
+            opacity: 1;
+        }
+
+        .piercing-item {
+            flex: 0 0 300px;
+            background: var(--white);
+            border: 1px solid var(--beige-dark);
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .piercing-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+
+        .scroll-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .scroll-btn {
+            background: var(--beige);
+            border: 1px solid var(--beige-dark);
+            border-radius: 4px;
+            width: 45px;
+            height: 45px;
+            color: var(--gray-dark);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-btn:hover {
+            background: var(--beige-dark);
+            color: var(--accent);
+        }
+
+        .item-image {
+            position: relative;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .image-placeholder {
+            font-size: 3.5rem;
+            opacity: 0.7;
+            transition: transform 0.3s ease;
+            color: var(--gray);
+        }
+
+        .piercing-item:hover .image-placeholder {
+            transform: scale(1.05);
+            color: var(--accent);
+        }
+
+        .item-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .item-badge.new {
+            background: var(--accent-light);
+        }
+
+        .item-badge.popular {
+            background: var(--gray);
+        }
+
+        .item-content h3 {
+            font-size: 1.3rem;
+            color: var(--black);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .item-desc {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .item-meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .item-meta span {
+            background: var(--beige);
+            border: 1px solid var(--beige-dark);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: var(--gray-dark);
+        }
+
+        .item-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+
+        .materials-info h4 {
+            color: var(--black);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .piercing-item {
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        .piercing-item:nth-child(2) { animation-delay: 0.1s; }
+        .piercing-item:nth-child(3) { animation-delay: 0.2s; }
+        .piercing-item:nth-child(4) { animation-delay: 0.3s; }
+        .piercing-item:nth-child(5) { animation-delay: 0.4s; }
+        .piercing-item:nth-child(6) { animation-delay: 0.5s; }
+
+        .magpie-container {
+            background: var(--beige);
+            border: 1px solid var(--beige-dark);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .magpie-character {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .magpie {
+            font-size: 8rem;
+            transform-origin: center;
+            color: var(--gray);
+        }
+
+        .speech-bubble {
+            position: relative;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            max-width: 380px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--beige-dark);
+        }
+
+        .bubble-content h4 {
+            color: var(--black);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .bubble-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 18px;
+            background: var(--beige);
+            border: 1px solid var(--beige-dark);
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            color: var(--gray-dark);
+        }
+
+        .social-link:hover {
+            background: var(--beige-dark);
+            transform: translateX(3px);
+            color: var(--accent);
+        }
+
+        .social-icon {
+            font-size: 1.3rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        .social-text {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .bubble-arrow {
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 15px solid var(--white);
+        }
+    </style>
 </head>
 <body>
 <div class="main-container">
-  <div class="content-box title_of_site first-container">
-    <div class="title-block">
-      <h1 class="gothic-title">Студия пирсинга</h1>
-    </div>
-    <div class="title-block">
-      <h1 class="gothic-title soroka-title">"Сорока"</h1>
-    </div>
-  </div>
-
-  <div class="content-box about">
-    <div class="marquee">
-      <div class="marquee__inner">
-        <p class="marquee__line">Кто мы? • Студия пирсинга "Сорока" • Кто мы? • Студия пирсинга "Сорока" •</p>
-        <p class="marquee__line">Кто мы? • Студия пирсинга "Сорока" • Кто мы? • Студия пирсинга "Сорока" •</p>
-      </div>
-    </div>
-
-    <div class="about-content">
-      <p class="about-text">Текст длинный очень.</p>
-      <p class="about-text">Самый самый самый самый самый лучший салон.</p>
-      <p class="about-text">И еще немного про то, какой мы лучший салон.</p>
-    </div>
-    <div class="about-image">
-      [Изображение интерьера Студияа]
-    </div>
-  </div>
-
-  <div class="content-box masters-container">
-    <div class="masters-header">
-      <h2>НАШИ МАСТЕРА</h2>
-    </div>
-
-    <div class="masters-content">
-      <div class="masters-scroll">
-        <div class="card-container">
-          <div class="round">
-            <img src="https://randomuser.me/api/portraits/women/79.jpg" alt="Ивана Иванова">
-          </div>
-          <h3>Ивана Иванова</h3>
-          <h6>Москва</h6>
-          <p>Специалист по пирсингам</p>
-          <div class="buttons">
-            <button class="primary">Написать</button>
-            <button class="primary ghost">Работы</button>
-          </div>
-          <div class="skills">
-            <h6>Специализация</h6>
-            <ul>
-              <li>Пирсинги</li>
-              <li>Мои</li>
-              <li>Пирсинги</li>
-            </ul>
-          </div>
+    <div class="content-box title_of_site first-container">
+        <div class="title-block">
+            <h1 class="gothic-title">Студия пирсинга</h1>
         </div>
-
-        <div class="card-container">
-          <div class="round">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Алексей Петров">
-          </div>
-          <h3>Алексей Петров</h3>
-          <h6>Москва</h6>
-          <p>Эксперт в множественных приколах</p>
-          <div class="buttons">
-            <button class="primary">Написать</button>
-            <button class="primary ghost">Работы</button>
-          </div>
-          <div class="skills">
-            <h6>Специализация</h6>
-            <ul>
-              <li>Такие проколы</li>
-              <li>Сякие</li>
-            </ul>
-          </div>
+        <div class="title-block">
+            <h1 class="gothic-title soroka-title">"Сорока"</h1>
         </div>
-
-        <div class="card-container">
-          <div class="round">
-            <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Мария Сидорова">
-          </div>
-          <h3>Мария Сидорова</h3>
-          <h6>Москва</h6>
-          <p>Мастер интимного пирсинга</p>
-          <div class="buttons">
-            <button class="primary">Написать</button>
-            <button class="primary ghost">Работы</button>
-          </div>
-          <div class="skills">
-            <h6>Специализация</h6>
-            <ul>
-              <li>Пирсинг</li>
-              <li>Интимный пирсинг</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card-container">
-          <div class="round">
-            <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Дмитрий Козлов">
-          </div>
-          <h3>Дмитрий Козлов</h3>
-          <h6>Москва</h6>
-          <p>Специалист по пирсингу и сложным проектам</p>
-          <div class="buttons">
-            <button class="primary">Написать</button>
-            <button class="primary ghost">Работы</button>
-          </div>
-          <div class="skills">
-            <h6>Специализация</h6>
-            <ul>
-              <li>Пирсинг</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="content-box data">
-    <div class="calendar-section">
-      <div class="calendar">
-        <div class="calendar-header">
-          <h3>Январь 2023</h3>
-          <div class="calendar-nav">
-            <button>&lt;</button>
-            <button>&gt;</button>
-          </div>
-        </div>
-        <div class="calendar-grid">
-          <div class="calendar-day">Пн</div>
-          <div class="calendar-day">Вт</div>
-          <div class="calendar-day">Ср</div>
-          <div class="calendar-day">Чт</div>
-          <div class="calendar-day">Пт</div>
-          <div class="calendar-day">Сб</div>
-          <div class="calendar-day">Вс</div>
-
-          <div class="calendar-date disabled">26</div>
-          <div class="calendar-date disabled">27</div>
-          <div class="calendar-date disabled">28</div>
-          <div class="calendar-date disabled">29</div>
-          <div class="calendar-date disabled">30</div>
-          <div class="calendar-date disabled">31</div>
-          <div class="calendar-date">1</div>
-
-          <div class="calendar-date">2</div>
-          <div class="calendar-date">3</div>
-          <div class="calendar-date">4</div>
-          <div class="calendar-date">5</div>
-          <div class="calendar-date">6</div>
-          <div class="calendar-date">7</div>
-          <div class="calendar-date">8</div>
-
-          <div class="calendar-date">9</div>
-          <div class="calendar-date">10</div>
-          <div class="calendar-date">11</div>
-          <div class="calendar-date">12</div>
-          <div class="calendar-date">13</div>
-          <div class="calendar-date">14</div>
-          <div class="calendar-date">15</div>
-
-          <div class="calendar-date active">16</div>
-          <div class="calendar-date">17</div>
-          <div class="calendar-date">18</div>
-          <div class="calendar-date">19</div>
-          <div class="calendar-date">20</div>
-          <div class="calendar-date">21</div>
-          <div class="calendar-date">22</div>
-
-          <div class="calendar-date">23</div>
-          <div class="calendar-date">24</div>
-          <div class="calendar-date">25</div>
-          <div class="calendar-date">26</div>
-          <div class="calendar-date">27</div>
-          <div class="calendar-date">28</div>
-          <div class="calendar-date">29</div>
-
-          <div class="calendar-date">30</div>
-          <div class="calendar-date">31</div>
-          <div class="calendar-date disabled">1</div>
-          <div class="calendar-date disabled">2</div>
-          <div class="calendar-date disabled">3</div>
-          <div class="calendar-date disabled">4</div>
-          <div class="calendar-date disabled">5</div>
-        </div>
-      </div>
     </div>
 
-    <div class="booking-section">
-      <div class="booking-header">
-        <h3>СВОБОДНЫЕ ЗАПИСИ</h3>
-        <div class="booking-date">Выбрана дата: 16 января 2023</div>
-      </div>
-
-      <div class="booking-slots">
-        <div class="time-slot popular">
-          <div class="slot-time">10:00 - 11:00</div>
-          <div class="slot-master">Мастер: Ивана</div>
-          <span class="slot-tag">Свободно</span>
-        </div>
-
-        <div class="time-slot">
-          <div class="slot-time">14:00 - 15:00</div>
-          <div class="slot-master">Мастер: Алексей</div>
-          <span class="slot-tag">Свободно</span>
-        </div>
-
-        <div class="time-slot popular">
-          <div class="slot-time">17:00 - 18:00</div>
-          <div class="slot-master">Мастер: Мария</div>
-          <span class="slot-tag">Свободно</span>
-        </div>
-
-        <div class="time-slot">
-          <div class="slot-time">19:00 - 20:00</div>
-          <div class="slot-master">Мастер: Дмитрий</div>
-          <span class="slot-tag">VIP запись</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="content-box types">
-    <div class="select-part">
-      <div class="menu-item active">
-        Пирсинг
-      </div>
-      <div class="menu-item">
-        Уход
-      </div>
-      <div class="menu-item">
-        Пирсинг еще один
-      </div>
-      <div class="menu-item">
-        Что-то еще
-      </div>
-    </div>
-
-    <div class="image-part">
-      <img src="blog-piercing-nose-1500x1000-1500x1000.jpg" alt="Пример работы">
-    </div>
-  </div>
-
-  <div class="content-box piercing-catalog">
-    <div class="catalog-header">
-      <h2>АССОРТИМЕНТ ПИРСИНГА</h2>
-      <p>Очаровательные уркашения</p>
-    </div>
-
-    <div class="catalog-scroll-container">
-      <div class="catalog-track" id="catalogTrack">
-        <div class="piercing-item">
-          <div class="item-image">
-            <div class="image-placeholder">💎</div>
-            <div class="item-badge">Хит</div>
-          </div>
-          <div class="item-content">
-            <h3>Кольца-сегменты</h3>
-            <p class="item-desc">Гипоаллергенные титановые кольца с сегментной застежкой</p>
-            <div class="item-meta">
-              <span class="material">Титан</span>
-              <span class="size">8-12mm</span>
+    <div class="content-box about">
+        <div class="marquee">
+            <div class="marquee__inner">
+                <p class="marquee__line">Кто мы? • Студия пирсинга "Сорока" • Кто мы? • Студия пирсинга "Сорока" •</p>
+                <p class="marquee__line">Кто мы? • Студия пирсинга "Сорока" • Кто мы? • Студия пирсинга "Сорока" •</p>
             </div>
-            <div class="item-price">от 1 200 ₽</div>
-            <button class="primary">Выбрать размер</button>
-          </div>
         </div>
 
-        <div class="piercing-item">
-          <div class="item-image">
-            <div class="image-placeholder">✨</div>
-            <div class="item-badge new">Новинка</div>
-          </div>
-          <div class="item-content">
-            <h3>Лабреты с резьбой</h3>
-            <p class="item-desc">Прямые штанги с декоративными насадками</p>
-            <div class="item-meta">
-              <span class="material">Биопласт</span>
-              <span class="size">6-16mm</span>
-            </div>
-            <div class="item-price">от 800 ₽</div>
-            <button class="primary">Смотреть дизайны</button>
-          </div>
+        <div class="about-content">
+            <p class="about-text">Текст длинный очень.</p>
+            <p class="about-text">Самый самый самый самый самый лучший салон.</p>
+            <p class="about-text">И еще немного про то, какой мы лучший салон.</p>
         </div>
-
-        <div class="piercing-item">
-          <div class="item-image">
-            <div class="image-placeholder">🔮</div>
-          </div>
-          <div class="item-content">
-            <h3>Нострилы</h3>
-            <p class="item-desc">Изогнутые украшения для крыла носа</p>
-            <div class="item-meta">
-              <span class="material">Сталь</span>
-              <span class="size">0.8-1.2mm</span>
-            </div>
-            <div class="item-price">от 1 500 ₽</div>
-            <button class="primary">Подробнее</button>
-          </div>
+        <div class="about-image">
+            [Изображение интерьера Студияа]
         </div>
-
-        <div class="piercing-item">
-          <div class="item-image">
-            <div class="image-placeholder">🌟</div>
-            <div class="item-badge popular">Популярное</div>
-          </div>
-          <div class="item-content">
-            <h3>Индастриалы</h3>
-            <p class="item-desc">Длинные штанги для соединения проколов</p>
-            <div class="item-meta">
-              <span class="material">Титан</span>
-              <span class="size">32-40mm</span>
-            </div>
-            <div class="item-price">от 2 000 ₽</div>
-            <button class="primary">Заказать</button>
-          </div>
-        </div>
-
-        <div class="piercing-item">
-          <div class="item-image">
-            <div class="image-placeholder">💫</div>
-          </div>
-          <div class="item-content">
-            <h3>Микродермалы</h3>
-            <p class="item-desc">Импланты для поверхностного пирсинга</p>
-            <div class="item-meta">
-              <span class="material">Титан</span>
-              <span class="size">1.2mm</span>
-            </div>
-            <div class="item-price">от 3 500 ₽</div>
-            <button class="primary">Консультация</button>
-          </div>
-        </div>
-
-        <div class="piercing-item">
-          <div class="item-image">
-            <div class="image-placeholder">🦋</div>
-            <div class="item-badge">Бестселлер</div>
-          </div>
-          <div class="item-content">
-            <h3>Хеликсы</h3>
-            <p class="item-desc">Украшения для хряща уха</p>
-            <div class="item-meta">
-              <span class="material">Золото 585</span>
-              <span class="size">6-10mm</span>
-            </div>
-            <div class="item-price">от 5 000 ₽</div>
-            <button class="primary">В наличии</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-nav">
-        <button class="scroll-btn" onclick="scrollCatalog(-320)">‹</button>
-        <button class="scroll-btn" onclick="scrollCatalog(320)">›</button>
-      </div>
     </div>
-  </div>
 
-  <script>
-    function scrollCatalog(distance) {
-      const track = document.getElementById('catalogTrack');
-      track.scrollBy({
-        left: distance,
-        behavior: 'smooth'
-      });
-    }
-  </script>
-
-  <div class="content-box magpie-container">
-    <div class="magpie-character">
-      <div class="magpie">
-        <img src="IMG_5960.PNG">
-      </div>
-      <div class="speech-bubble">
-        <div class="bubble-content">
-          <h4>Сорока-новостей принесла!</h4>
-          <p>Подписывайся на наши соцсети</p>
-          <div class="social-links">
-            <a href="" class="social-link telegram" >
-              <span class="social-icon">✈️</span>
-              <span class="social-text">Телеграм-канал</span>
-            </a>
-          </div>
-          <div class="bubble-arrow"></div>
+    <div class="content-box masters-container">
+        <div class="masters-header">
+            <h2>Наши мастера</h2>
         </div>
-      </div>
+
+        <div class="masters-content">
+            <div class="masters-scroll">
+                <div class="card-container">
+                    <div class="round">
+                        <img src="https://randomuser.me/api/portraits/women/79.jpg" alt="Ивана Иванова">
+                    </div>
+                    <h3>Ивана Иванова</h3>
+                    <h6>Москва</h6>
+                    <p>Специалист по современному пирсингу</p>
+                    <div class="buttons">
+                        <button class="primary">Написать</button>
+                        <button class="primary ghost">Работы</button>
+                    </div>
+                    <div class="skills">
+                        <h6>Специализация</h6>
+                        <ul>
+                            <li>Ушной пирсинг</li>
+                            <li>Лицевой пирсинг</li>
+                            <li>Микродермалы</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-container">
+                    <div class="round">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Алексей Петров">
+                    </div>
+                    <h3>Алексей Петров</h3>
+                    <h6>Москва</h6>
+                    <p>Эксперт по сложным проектам</p>
+                    <div class="buttons">
+                        <button class="primary">Написать</button>
+                        <button class="primary ghost">Работы</button>
+                    </div>
+                    <div class="skills">
+                        <h6>Специализация</h6>
+                        <ul>
+                            <li>Индастриалы</li>
+                            <li>Сurface пирсинг</li>
+                            <li>Сложные проекты</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-container">
+                    <div class="round">
+                        <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Мария Сидорова">
+                    </div>
+                    <h3>Мария Сидорова</h3>
+                    <h6>Москва</h6>
+                    <p>Специалист по деликатному пирсингу</p>
+                    <div class="buttons">
+                        <button class="primary">Написать</button>
+                        <button class="primary ghost">Работы</button>
+                    </div>
+                    <div class="skills">
+                        <h6>Специализация</h6>
+                        <ul>
+                            <li>Носовой пирсинг</li>
+                            <li>Губной пирсинг</li>
+                            <li>Первичный пирсинг</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-container">
+                    <div class="round">
+                        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Дмитрий Козлов">
+                    </div>
+                    <h3>Дмитрий Козлов</h3>
+                    <h6>Москва</h6>
+                    <p>Специалист по пирсингу и сложным проектам</p>
+                    <div class="buttons">
+                        <button class="primary">Написать</button>
+                        <button class="primary ghost">Работы</button>
+                    </div>
+                    <div class="skills">
+                        <h6>Специализация</h6>
+                        <ul>
+                            <li>Пирсинг</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
+    <div class="content-box data">
+        <div class="calendar-section">
+            <div class="calendar">
+                <div class="calendar-header">
+                    <h3>Январь 2024</h3>
+                    <div class="calendar-nav">
+                        <button>&lt;</button>
+                        <button>&gt;</button>
+                    </div>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-day">Пн</div>
+                    <div class="calendar-day">Вт</div>
+                    <div class="calendar-day">Ср</div>
+                    <div class="calendar-day">Чт</div>
+                    <div class="calendar-day">Пт</div>
+                    <div class="calendar-day">Сб</div>
+                    <div class="calendar-day">Вс</div>
 
+                    <div class="calendar-date disabled">25</div>
+                    <div class="calendar-date disabled">26</div>
+                    <div class="calendar-date disabled">27</div>
+                    <div class="calendar-date disabled">28</div>
+                    <div class="calendar-date disabled">29</div>
+                    <div class="calendar-date disabled">30</div>
+                    <div class="calendar-date disabled">31</div>
 
+                    <div class="calendar-date">1</div>
+                    <div class="calendar-date">2</div>
+                    <div class="calendar-date">3</div>
+                    <div class="calendar-date">4</div>
+                    <div class="calendar-date">5</div>
+                    <div class="calendar-date">6</div>
+                    <div class="calendar-date">7</div>
 
+                    <div class="calendar-date">8</div>
+                    <div class="calendar-date">9</div>
+                    <div class="calendar-date">10</div>
+                    <div class="calendar-date">11</div>
+                    <div class="calendar-date">12</div>
+                    <div class="calendar-date">13</div>
+                    <div class="calendar-date">14</div>
+
+                    <div class="calendar-date">15</div>
+                    <div class="calendar-date active">16</div>
+                    <div class="calendar-date">17</div>
+                    <div class="calendar-date">18</div>
+                    <div class="calendar-date">19</div>
+                    <div class="calendar-date">20</div>
+                    <div class="calendar-date">21</div>
+
+                    <div class="calendar-date">22</div>
+                    <div class="calendar-date">23</div>
+                    <div class="calendar-date">24</div>
+                    <div class="calendar-date">25</div>
+                    <div class="calendar-date">26</div>
+                    <div class="calendar-date">27</div>
+                    <div class="calendar-date">28</div>
+
+                    <div class="calendar-date">29</div>
+                    <div class="calendar-date">30</div>
+                    <div class="calendar-date">31</div>
+                    <div class="calendar-date disabled">1</div>
+                    <div class="calendar-date disabled">2</div>
+                    <div class="calendar-date disabled">3</div>
+                    <div class="calendar-date disabled">4</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="booking-section">
+            <div class="booking-header">
+                <h3>Свободные записи</h3>
+                <div class="booking-date">Выбрана дата: 16 января 2024</div>
+            </div>
+
+            <div class="booking-slots">
+                <div class="time-slot popular">
+                    <div class="slot-time">10:00 - 11:00</div>
+                    <div class="slot-master">Мастер: Ивана</div>
+                    <span class="slot-tag">Свободно</span>
+                </div>
+
+                <div class="time-slot">
+                    <div class="slot-time">14:00 - 15:00</div>
+                    <div class="slot-master">Мастер: Алексей</div>
+                    <span class="slot-tag">Свободно</span>
+                </div>
+
+                <div class="time-slot popular">
+                    <div class="slot-time">17:00 - 18:00</div>
+                    <div class="slot-master">Мастер: Мария</div>
+                    <span class="slot-tag">Свободно</span>
+                </div>
+
+                <div class="time-slot">
+                    <div class="slot-time">19:00 - 20:00</div>
+                    <div class="slot-master">Мастер: Дмитрий</div>
+                    <span class="slot-tag">VIP запись</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-box types">
+        <div class="select-part">
+            <div class="menu-item active">
+                Пирсинг
+            </div>
+            <div class="menu-item">
+                Уход
+            </div>
+            <div class="menu-item">
+                Пирсинг еще один
+            </div>
+            <div class="menu-item">
+                Что-то еще
+            </div>
+        </div>
+
+        <div class="image-part">
+            <img src="blog-piercing-nose-1500x1000-1500x1000.jpg" alt="Пример работы">
+        </div>
+    </div>
+
+    <div class="content-box piercing-catalog">
+        <div class="catalog-header">
+            <h2>Ассортимент пирсинга</h2>
+            <p>Качественные украшения от проверенных производителей</p>
+        </div>
+
+        <div class="catalog-scroll-container">
+            <div class="catalog-track" id="catalogTrack">
+                <div class="piercing-item">
+                    <div class="item-image">
+                        <div class="image-placeholder">💎</div>
+                        <div class="item-badge">Хит</div>
+                    </div>
+                    <div class="item-content">
+                        <h3>Кольца-сегменты</h3>
+                        <p class="item-desc">Гипоаллергенные титановые кольца с сегментной застежкой</p>
+                        <div class="item-meta">
+                            <span class="material">Титан</span>
+                            <span class="size">8-12mm</span>
+                        </div>
+                        <div class="item-price">от 1 200 ₽</div>
+                        <button class="primary">Выбрать размер</button>
+                    </div>
+                </div>
+
+                <div class="piercing-item">
+                    <div class="item-image">
+                        <div class="image-placeholder">✨</div>
+                        <div class="item-badge new">Новинка</div>
+                    </div>
+                    <div class="item-content">
+                        <h3>Лабреты с резьбой</h3>
+                        <p class="item-desc">Прямые штанги с декоративными насадками</p>
+                        <div class="item-meta">
+                            <span class="material">Биопласт</span>
+                            <span class="size">6-16mm</span>
+                        </div>
+                        <div class="item-price">от 800 ₽</div>
+                        <button class="primary">Смотреть дизайны</button>
+                    </div>
+                </div>
+
+                <div class="piercing-item">
+                    <div class="item-image">
+                        <div class="image-placeholder">🔮</div>
+                    </div>
+                    <div class="item-content">
+                        <h3>Нострилы</h3>
+                        <p class="item-desc">Изогнутые украшения для крыла носа</p>
+                        <div class="item-meta">
+                            <span class="material">Сталь</span>
+                            <span class="size">0.8-1.2mm</span>
+                        </div>
+                        <div class="item-price">от 1 500 ₽</div>
+                        <button class="primary">Подробнее</button>
+                    </div>
+                </div>
+
+                <div class="piercing-item">
+                    <div class="item-image">
+                        <div class="image-placeholder">🌟</div>
+                        <div class="item-badge popular">Популярное</div>
+                    </div>
+                    <div class="item-content">
+                        <h3>Индастриалы</h3>
+                        <p class="item-desc">Длинные штанги для соединения проколов</p>
+                        <div class="item-meta">
+                            <span class="material">Титан</span>
+                            <span class="size">32-40mm</span>
+                        </div>
+                        <div class="item-price">от 2 000 ₽</div>
+                        <button class="primary">Заказать</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-nav">
+                <button class="scroll-btn" onclick="scrollCatalog(-300)">‹</button>
+                <button class="scroll-btn" onclick="scrollCatalog(300)">›</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-box magpie-container">
+        <div class="magpie-character">
+            <div class="magpie">🪶</div>
+            <div class="speech-bubble">
+                <div class="bubble-content">
+                    <h4>Сорока-новостей принесла!</h4>
+                    <p>Подписывайся на наш телеграм-канал, чтобы быть в курсе акций и новинок</p>
+                    <div class="social-links">
+                        <a href="https://t.me/soroka_piercing" class="social-link telegram">
+                            <span class="social-icon">✈️</span>
+                            <span class="social-text">Телеграм-канал</span>
+                        </a>
+                    </div>
+                    <div class="bubble-arrow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    function scrollCatalog(distance) {
+        const track = document.getElementById('catalogTrack');
+        track.scrollBy({
+            left: distance,
+            behavior: 'smooth'
+        });
+    }
+</script>
 </body>
 </html>
